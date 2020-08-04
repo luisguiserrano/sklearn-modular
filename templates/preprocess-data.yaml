@@ -24,12 +24,12 @@ spec:
         raw:
           data: |
             from modular.utils import save_json 
+            from modular.utils import read_json
             from modular.functions import preprocess_data
             
             data = read_json('data.json')
-            features, labels = preprocess_data(data)
-            save_json(features, 'features.json')
-            save_json(labels, 'labels.json')
+            processed_data = preprocess_data(data)
+            save_json(processed_data, 'processed_data.json')
   
     outputs:
       artifacts:
