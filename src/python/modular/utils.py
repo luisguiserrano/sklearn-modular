@@ -18,9 +18,11 @@ def read_dataset(filename):
         names = np.asarray(data_list[0].split(','))
         values = np.asarray([dt.split(',') for dt in data_list[1:]])
         data = pd.DataFrame(values, columns=names)
-        print(data)
-        print(data.to_json())
-        return data.to_json()
+        #print(data)
+        #print(data.to_json())
+        result = {}
+        result["data"] = data.to_dict()
+        return result
 
     except Exception as e:
         print(f'Errors: could not load dataset: {e}')
