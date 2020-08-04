@@ -10,4 +10,9 @@ def preprocess_data(data:dict) -> dict:
     result["features"] = features.to_dict()
     result["labels"] = labels.to_dict()
 
+    print("FEATURES")
+    print(features)
+    print("LABELS")
+    print(labels)
+
     return result
