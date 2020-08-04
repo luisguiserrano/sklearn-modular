@@ -1,0 +1,49 @@
+spec:
+
+  templates:
+
+  - name: train-predict-score
+    parent: generic-task
+
+    inputs:
+
+      parameters:
+      - name: docker-image
+        value: z-ml
+      - name: docker-tag
+        value: latest
+
+      - name: command
+        value: python3 main.py
+
+      artifacts:
+      - name: preprocessed-data
+        path: /app/preprocessed-data.json
+      - name: main-script
+        path: /app/main.py
+        raw:
+          data: |
+            from modular.utils import save_json 
+            from modular.utils import read_json
+            from modular.functions import train_model
+            from modular.functions import make_predictions
+            from modular.functions import score_model
+            
+            preprocessed_data = read_json('preprocessed_data.json')
+            features = preprocessed_data["features"]
+            labels = preprocessed_data["labels"]
+
+            model = train_model(features, labels)
+            predictions = make_predictions(model, features)
+            score = score_model(features, labels)
+
+            result = {}
+            result["predictions"] = predictions.to_json()
+            result["score"] = score.to_json()
+
+            save_json(result, 'result.json')
+  
+    outputs:
+      artifacts:
+      - name: preprocessed_data
+        path: /app/preprocessed_data.json
