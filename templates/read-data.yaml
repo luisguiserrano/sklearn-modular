@@ -23,6 +23,7 @@ spec:
         raw:
           data: |
             from modular.utils import read_dataset
+            from modular.utils import save_json
             params = {
                 'datafile': str('{{inputs.parameters.datafile}}')
                 }
