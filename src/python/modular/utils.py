@@ -41,6 +41,24 @@ def save_json(result, filename) -> None:
     except IOError:
         print(f'Error: Could not open {filename}')
 
+def read_json(filename) -> dict:
+    """
+    Loads data from JSON.
+    Args:
+        filename (str): the file to load the data from.
+    Returns:
+        data (dict): data that was loaded from the file.
+    """
+    data = {}
+    try:
+        with open(filename, 'r') as f:
+            data = json.load(f)
+    except IOError:
+            print(f'Error: Could not open {filename}')
+
+    return data
+
+
 '''
 class NumpyArrayEncoder(JSONEncoder):
     """
