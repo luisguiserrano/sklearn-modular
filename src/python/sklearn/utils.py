@@ -9,7 +9,7 @@ import numpy as np
 
 from pkg_resources import resource_string
 
-def load_dataset(filename):
+def read_dataset(filename):
      
     try:
         data = resource_string(__name__, filename)

@@ -6,7 +6,7 @@ resources:
 - name: sklearn-modular
   type: git
   parameters:
-    url: "git@github.com:luisguiserrano/z-sklearn.git"
+    url: "git@github.com:luisguiserrano/sklearn-modular.git"
     branch: "master"
     
 metadata:
@@ -24,8 +24,8 @@ spec:
   templates:
   - name: sklearn-modular
     steps:
-    - - name: load-data
-        template: load-data
+    - - name: read-data
+        template: read-data
         arguments:
           parameters:
 
