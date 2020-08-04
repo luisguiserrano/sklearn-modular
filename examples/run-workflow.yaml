@@ -42,3 +42,13 @@ spec:
           artifacts:
           - name: data
             from: '{{steps.read-data.outputs.artifacts.data}}'
+    - - name: train-predict-score
+        template: train-predict-score
+        arguments:
+          parameters:
+          - resources: [sklearn-modular]
+          - docker-image: z-ml
+          - docker-tag: latest
+          artifacts:
+          - name: preprocessed-data
+            from: '{{steps.preprocess-data.outputs.artifacts.preprocessed-data}}'

@@ -45,5 +45,5 @@ spec:
   
     outputs:
       artifacts:
-      - name: preprocessed_data
-        path: /app/preprocessed_data.json
+      - name: result
+        path: /app/result.json
