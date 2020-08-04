@@ -22,7 +22,7 @@ spec:
         path: /app/main.py
         raw:
           data: |
-            from sklearn.utils import read_dataset
+            from modular.utils import read_dataset
             params = {
                 'datafile': str('{{inputs.parameters.datafile}}')
                 }
