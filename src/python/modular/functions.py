@@ -1,7 +1,7 @@
 import pandas as pd
 
 def preprocess_data(data:dict) -> dict:
-    df = pd.DataFrame.from_dict(data)
+    df = pd.DataFrame.from_dict(data)['data']
 
     print("DF")
     print(df)
