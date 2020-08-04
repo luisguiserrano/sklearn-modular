@@ -1,0 +1,35 @@
+ZapOSApiVersion: v1alpha1
+
+kind: Workflow
+
+resources:
+- name: sklearn-modular
+  type: git
+  parameters:
+    url: "git@github.com:luisguiserrano/z-sklearn.git"
+    branch: "master"
+    
+metadata:
+  generateName: sklearn-modular-
+
+spec:
+
+  entrypoint: sklearn-modular
+
+  arguments:
+    parameters:
+    - s3-bucket: quantum-engine
+    - s3-key: mine/modular/
+
+  templates:
+  - name: sklearn-modular
+    steps:
+    - - name: load-data
+        template: load-data
+        arguments:
+          parameters:
+
+          - resources: [sklearn-modular]
+          - docker-image: z-ml
+          - docker-tag: latest
+          - datafile: "datasets/data.csv"

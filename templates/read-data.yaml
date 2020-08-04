@@ -1,0 +1,36 @@
+spec:
+
+  templates:
+
+  - name: read-data
+    parent: generic-task
+
+    inputs:
+
+      parameters:
+      - name: docker-image
+        value: z-ml
+      - name: docker-tag
+        value: latest
+      - name: datafile
+
+      - name: command
+        value: python3 main.py
+
+      artifacts:
+      - name: main-script
+        path: /app/main.py
+        raw:
+          data: |
+            from sklearn.utils import read_dataset
+            params = {
+                'datafile': str('{{inputs.parameters.datafile}}')
+                }
+
+            data = read_dataset()
+            save_json(data, 'data.json')
+  
+    outputs:
+      artifacts:
+      - name: data
+        path: /app/data.json
