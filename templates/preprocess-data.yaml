@@ -28,7 +28,7 @@ spec:
             from modular.functions import preprocess_data
             
             data = read_json('data.json')
-            processed_data = preprocess_data(data)
+            preprocessed_data = preprocess_data(data)
             save_json(processed_data, 'processed_data.json')
   
     outputs:
