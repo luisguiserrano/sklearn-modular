@@ -51,4 +51,4 @@ spec:
           - docker-tag: latest
           artifacts:
           - name: preprocessed-data
-            from: '{{steps.preprocess-data.outputs.artifacts.preprocessed-data}}'
+            from: '{{steps.preprocess-data.outputs.artifacts.preprocessed_data}}'

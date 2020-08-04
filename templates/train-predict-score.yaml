@@ -30,6 +30,9 @@ spec:
             from modular.functions import score_model
             
             preprocessed_data = read_json('preprocessed_data.json')
+            print("TYPE")
+            print(type(preprocessed_data))
+            print(preprocessed_data)
             features = preprocessed_data["features"]
             labels = preprocessed_data["labels"]
 
