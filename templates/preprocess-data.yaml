@@ -1,0 +1,37 @@
+spec:
+
+  templates:
+
+  - name: preprocess-data
+    parent: generic-task
+
+    inputs:
+
+      parameters:
+      - name: docker-image
+        value: z-ml
+      - name: docker-tag
+        value: latest
+
+      - name: command
+        value: python3 main.py
+
+      artifacts:
+      - name: data
+        path: /app/data.json
+      - name: main-script
+        path: /app/main.py
+        raw:
+          data: |
+            from modular.utils import save_json 
+            from modular.functions import preprocess_data
+            
+            data = read_json('data.json')
+            features, labels = preprocess_data(data)
+            save_json(features, 'features.json')
+            save_json(labels, 'labels.json')
+  
+    outputs:
+      artifacts:
+      - name: preprocessed_data
+        path: /app/preprocessed_data.json

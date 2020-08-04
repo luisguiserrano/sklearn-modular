@@ -28,8 +28,17 @@ spec:
         template: read-data
         arguments:
           parameters:
-
           - resources: [sklearn-modular]
           - docker-image: z-ml
           - docker-tag: latest
           - datafile: "datasets/data.csv"
+    - - name: preprocess-data
+        template: preprocess-data
+        arguments:
+          parameters:
+          - resources: [sklearn-modular]
+          - docker-image: z-ml
+          - docker-tag: latest
+          artifacts:
+          - name: data
+            from: '{{steps.read-data.outputs.artifacts.data}}'
