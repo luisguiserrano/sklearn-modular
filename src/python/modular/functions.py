@@ -11,7 +11,7 @@ def preprocess_data(data:dict) -> dict:
     print(type(df.keys()))
     print(df.keys())
 
-    features = df[df.keys()[1:-1]]
+    features = df[df.keys()[:-1]]
     labels = df[df.keys()[-1]]
 
     print("FEATURES")
@@ -22,7 +22,7 @@ def preprocess_data(data:dict) -> dict:
     print(labels)
 
     result = {}
-    result["features"] = features
+    result["features"] = features.to_dict()
     result["labels"] = labels
 
     return result
