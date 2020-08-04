@@ -27,7 +27,7 @@ spec:
                 'datafile': str('{{inputs.parameters.datafile}}')
                 }
 
-            data = read_dataset(datafile)
+            data = read_dataset(params['datafile'])
             save_json(data, 'data.json')
   
     outputs:
