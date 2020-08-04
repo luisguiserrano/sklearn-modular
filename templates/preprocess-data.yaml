@@ -29,7 +29,7 @@ spec:
             
             data = read_json('data.json')
             preprocessed_data = preprocess_data(data)
-            save_json(processed_data, 'processed_data.json')
+            save_json(preprocessed_data, 'preprocessed_data.json')
   
     outputs:
       artifacts:
