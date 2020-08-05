@@ -4,27 +4,31 @@ import sklearn
 def preprocess_data(data:dict) -> dict:
     df = pd.DataFrame.from_dict(data)['data']
 
-    print("DF")
-    print(type(df))
-    print(df)
+    #print("DF")
+    #print(type(df))
+    #print(df)
 
-    print("KEYS")
-    print(type(df.keys()))
-    print(df.keys())
+    #print("KEYS")
+    #print(type(df.keys()))
+    #print(df.keys())
 
     features = df[df.keys()[:-1]]
     labels = df[df.keys()[-1]]
 
-    print("FEATURES")
-    print(type(features))
-    print(features)
-    print("LABELS")
-    print(type(labels))
-    print(labels)
+    #print("FEATURES")
+    #print(type(features))
+    #print(features)
+    #print("LABELS")
+    #print(type(labels))
+    #print(labels)
 
     result = {}
     result["features"] = features.to_dict()
     result["labels"] = labels
+
+    print("RESULTS")
+    print(result.keys())
+    print(result)
 
     return result
 
