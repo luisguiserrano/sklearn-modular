@@ -23,15 +23,15 @@ spec:
         path: /app/main.py
         raw:
           data: |
-            from modular.utils import save_json 
+            from modular.utils import save_json
             from modular.utils import read_json
             from modular.functions import preprocess_data
             
             data = read_json('data.json')
-            preprocessed_data = preprocess_data(data)
+            result = preprocess_data(data)
             print("DATA ABOUT TO BE SENT TO JSON")
-            print(preprocessed_data)
-            save_json(preprocessed_data, 'preprocessed_data.json')
+            print(result)
+            save_json(result, 'preprocessed_data.json')
   
     outputs:
       artifacts:

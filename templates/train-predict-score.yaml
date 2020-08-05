@@ -31,6 +31,7 @@ spec:
             
             preprocessed_data = read_json('preprocessed_data.json')
             print("TYPE")
+            print(preprocessed_data.keys())
             print(type(preprocessed_data))
             print(preprocessed_data)
             features = preprocessed_data["features"]
