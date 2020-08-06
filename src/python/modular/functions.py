@@ -13,16 +13,6 @@ def read_dataset(filename):
         data = pd.DataFrame(values, columns=names)
         result = {}
         result["data"] = data.to_dict()
-        #print(result.keys())
-        #print(result['data'].keys())
-        #print("=======")
-        #print(result['data'][''])
-        #print("=======")
-        #print(result['data']['x_1'])
-        #print("=======")
-        #print(result['data']['x_2'])
-        #print("=======")
-        #print(result['data']['y'])
         return result
 
     except Exception as e:
@@ -60,7 +50,7 @@ def preprocess_data(data:dict) -> dict:
 
     return result
 
-def train_model(features, labels):
+def train_perceptron(features, labels):
     model = sklearn.linear_model.LogisticRegression()
     model.fit(features, labels)
     return model

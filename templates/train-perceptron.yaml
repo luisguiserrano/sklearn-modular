@@ -2,7 +2,7 @@ spec:
 
   templates:
 
-  - name: train-predict-score
+  - name: train-perceptron
     parent: generic-task
 
     inputs:
@@ -17,8 +17,8 @@ spec:
         value: python3 main.py
 
       artifacts:
-      - name: preprocessed-data
-        path: /app/preprocessed-data.json
+      - name: data
+        path: /app/data.json
       - name: main-script
         path: /app/main.py
         raw:
@@ -29,13 +29,13 @@ spec:
             from modular.functions import make_predictions
             from modular.functions import score_model
             
-            preprocessed_data = read_json('preprocessed_data.json')
+            data = read_json('data.json')
             print("TYPE")
-            print(preprocessed_data.keys())
-            print(type(preprocessed_data))
-            print(preprocessed_data)
-            features = preprocessed_data["features"]
-            labels = preprocessed_data["labels"]
+            print(data.keys())
+            print(type(data))
+            print(data)
+            features = data["features"]
+            labels = data["labels"]
 
             model = train_model(features, labels)
             predictions = make_predictions(model, features)
