@@ -73,7 +73,7 @@ def score_model(model, features, labels):
     score = model.score(features, labels)
     return score
 
-print("1")
-data = read_dataset('datasets/data.csv')
-print("2")
-preprocess_data(data)
+#print("1")
+#data = read_dataset('datasets/data.csv')
+#print("2")
+#preprocess_data(data)
