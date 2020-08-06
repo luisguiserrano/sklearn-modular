@@ -37,7 +37,7 @@ spec:
             features = data["features"]
             labels = data["labels"]
 
-            model = train_model(features, labels)
+            model = train_perceptron(features, labels)
             predictions = make_predictions(model, features)
             score = score_model(features, labels)
 

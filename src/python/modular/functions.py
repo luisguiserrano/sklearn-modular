@@ -51,6 +51,8 @@ def preprocess_data(data:dict) -> dict:
     return result
 
 def train_perceptron(features, labels):
+    print(features)
+    print(labels)
     model = sklearn.linear_model.LogisticRegression()
     model.fit(features, labels)
     return model

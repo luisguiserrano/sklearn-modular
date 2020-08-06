@@ -32,8 +32,8 @@ spec:
           - docker-image: z-ml
           - docker-tag: latest
           - datafile: "datasets/data.csv"
-    - - name: train-predict-score
-        template: train-predict-score
+    - - name: train-perceptron
+        template: train-perceptron
         arguments:
           parameters:
           - resources: [sklearn-modular]
