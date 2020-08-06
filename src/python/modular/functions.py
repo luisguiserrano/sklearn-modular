@@ -1,5 +1,6 @@
 import pandas as pd
 import sklearn
+from sklearn.linear_model import LogisticRegression
 import numpy as np
 from pkg_resources import resource_string
 
@@ -53,7 +54,7 @@ def preprocess_data(data:dict) -> dict:
 def train_perceptron(features, labels):
     print(features)
     print(labels)
-    model = sklearn.linear_model.LogisticRegression()
+    model = LogisticRegression()
     model.fit(features, labels)
     return model
 
