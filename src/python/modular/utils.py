@@ -55,5 +55,3 @@ class NumpyArrayEncoder(JSONEncoder):
             return obj.tolist()
         return JSONEncoder.default(self, obj)
 '''
-
-read_dataset("datasets/data.csv")
