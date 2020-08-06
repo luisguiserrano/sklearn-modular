@@ -22,13 +22,15 @@ spec:
         path: /app/main.py
         raw:
           data: |
-            from modular.utils import read_dataset
+            from modular.functions import read_dataset
+            from modular.functions import preprocess_data
             from modular.utils import save_json
             params = {
                 'datafile': str('{{inputs.parameters.datafile}}')
                 }
 
-            data = read_dataset(params['datafile'])
+            raw_data = read_dataset(params['datafile'])
+            data = preprocess_data(raw_data)
             save_json(data, 'data.json')
   
     outputs:
