@@ -12,17 +12,18 @@ def read_dataset(filename):
         names = np.asarray(data_list[0].split(','))
         values = np.asarray([dt.split(',') for dt in data_list[1:]])
         data = pd.DataFrame(values, columns=names)
-        result = {}
-        result["data"] = data.to_dict()
-        return result
+        return data
+        #result = {}
+        #result["data"] = data.to_dict()
+        #return result
 
     except Exception as e:
         print(f'Errors: could not load dataset: {e}')
 
 def preprocess_data(data:dict) -> dict:
-    df = pd.DataFrame.from_dict(data)['data']
-    features = df[df.keys()[:-1]]
-    labels = df[df.keys()[-1]]
+    #df = pd.DataFrame.from_dict(data)['data']
+    features = data[data.keys()[:-1]]
+    labels = data[data.keys()[-1]]
 
     return features, labels
     #result = {}
