@@ -39,7 +39,7 @@ spec:
             data = read_dataset(params['datafile'])
             features, labels = preprocess_data(data)
 
-            model = train_model(features, labels, model_name)
+            model = train_model(features, labels, params['model_name'])
             predictions = make_predictions(model, features)
             score = score_model(model, features, labels)
 
