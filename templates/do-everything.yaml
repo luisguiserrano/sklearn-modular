@@ -13,6 +13,7 @@ spec:
       - name: docker-tag
         value: latest
       - name: datafile
+      - name: model_name
 
       - name: command
         value: python3 main.py

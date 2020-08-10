@@ -32,3 +32,4 @@ spec:
           - docker-image: z-ml
           - docker-tag: latest
           - datafile: "datasets/data.csv"
+          - model_name: "decision_tree"
