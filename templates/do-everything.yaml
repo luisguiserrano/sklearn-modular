@@ -1,0 +1,51 @@
+spec:
+
+  templates:
+
+  - name: do-everything
+    parent: generic-task
+
+    inputs:
+
+      parameters:
+      - name: docker-image
+        value: z-ml
+      - name: docker-tag
+        value: latest
+      - name: datafile
+
+      - name: command
+        value: python3 main.py
+
+      artifacts:
+      - name: main-script
+        path: /app/main.py
+        raw:
+          data: |
+            from modular.functions import read_dataset
+            from modular.functions import preprocess_data
+            from modular.utils import save_json
+            from modular.functions import train_perceptron
+            from modular.functions import make_predictions
+            from modular.functions import score_model
+
+            params = {
+                'datafile': str('{{inputs.parameters.datafile}}')
+                }
+
+            data = read_dataset(params['datafile'])
+            features, labels = preprocess_data(data)
+
+            model = train_perceptron(features, labels)
+            predictions = make_predictions(model, features)
+            score = score_model(model, features, labels)
+
+            result = {}
+            result['predictions'] = predictions
+            result['score'] = score
+            save_json(result, 'result.json')
+
+    outputs:
+      artifacts:
+      - name: result
+        path: /app/result.json

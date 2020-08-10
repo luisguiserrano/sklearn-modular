@@ -20,42 +20,21 @@ def read_dataset(filename):
         print(f'Errors: could not load dataset: {e}')
 
 def preprocess_data(data:dict) -> dict:
-    #print("PREPROCESSING DATA")
     df = pd.DataFrame.from_dict(data)['data']
-
-    #print("DF")
-    #print(type(df))
-    #print(df)
-
-    #print("KEYS")
-    #print(type(df.keys()))
-    #print(df.keys())
-
     features = df[df.keys()[:-1]]
     labels = df[df.keys()[-1]]
 
-    #print("FEATURES")
-    #print(type(features))
-    #print(features)
-    #print("LABELS")
-    #print(type(labels))
-    #print(labels)
-
-    result = {}
-    result["features"] = features.to_dict()
-    result["labels"] = labels
-
-    #print("RESULTS")
-    print(result.keys())
-    print(result)
-
-    return result
+    return features, labels
+    #result = {}
+    #result["features"] = features.to_dict()
+    #result["labels"] = labels
+    #return result
 
 def train_perceptron(features, labels):
-    print(features)
-    print(labels)
+    f = pd.DataFrame.from_dict(features)
+    l = pd.DataFrame.from_dict([labels]).transpose()
     model = LogisticRegression()
-    model.fit(features, labels)
+    model.fit(f, l)
     return model
 
 def make_predictions(model, features):
@@ -66,7 +45,9 @@ def score_model(model, features, labels):
     score = model.score(features, labels)
     return score
 
-#print("1")
-#data = read_dataset('datasets/data.csv')
-#print("2")
-#preprocess_data(data)
+raw_data = read_dataset('datasets/data.csv')
+data = preprocess_data(raw_data)
+features = data["features"]
+labels = data["labels"]
+
+train_perceptron(features, labels)

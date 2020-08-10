@@ -24,21 +24,11 @@ spec:
   templates:
   - name: sklearn-modular
     steps:
-    - - name: read-data
-        template: read-data
+    - - name: do-everything
+        template: do-everything
         arguments:
           parameters:
           - resources: [sklearn-modular]
           - docker-image: z-ml
           - docker-tag: latest
           - datafile: "datasets/data.csv"
-    - - name: train-perceptron
-        template: train-perceptron
-        arguments:
-          parameters:
-          - resources: [sklearn-modular]
-          - docker-image: z-ml
-          - docker-tag: latest
-          artifacts:
-          - name: data
-            from: '{{steps.read-data.outputs.artifacts.data}}'
