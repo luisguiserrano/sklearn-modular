@@ -40,15 +40,18 @@ def train_perceptron(features, labels):
 
 def make_predictions(model, features):
     predictions = model.predict(features)
-    return predictions
+    return list(predictions)
 
 def score_model(model, features, labels):
     score = model.score(features, labels)
     return score
 
-#raw_data = read_dataset('datasets/data.csv')
-#data = preprocess_data(raw_data)
-#features = data["features"]
-#labels = data["labels"]
-
-#train_perceptron(features, labels)
+#data = read_dataset('datasets/data.csv')
+#features, labels = preprocess_data(data)
+#model = train_perceptron(features, labels)
+#predictions = make_predictions(model, features)
+#score = score_model(model, features, labels)
+#print(type(predictions))
+#print(predictions)
+#print(type(score))
+#print(score)
