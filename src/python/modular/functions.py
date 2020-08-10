@@ -1,6 +1,8 @@
 import pandas as pd
 import sklearn
 from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 import numpy as np
 from pkg_resources import resource_string
 
@@ -32,11 +34,29 @@ def preprocess_data(data:dict) -> dict:
     #return result
 
 def train_perceptron(features, labels):
-    f = pd.DataFrame.from_dict(features)
-    l = pd.DataFrame.from_dict([labels]).transpose()
+    #f = pd.DataFrame.from_dict(features)
+    #l = pd.DataFrame.from_dict([labels]).transpose()
     model = LogisticRegression()
-    model.fit(f, l)
+    model.fit(features, labels)
     return model
+
+def train_decision_tree(features, labels):
+    model = DecisionTreeClassifier()
+    model.fit(features, labels)
+    return model
+
+def train_svm(features, labels):
+    model = SVC()
+    model.fit(features, labels)
+    return model
+
+def train_model(features, labels, model_name="perceptron"):
+    if model_name == "perceptron":
+        return train_perceptron(features, labels)
+    elif model_name == "decision_tree":
+        return train_decision_tree(features, labels)
+    elif model_name == "svm":
+        return train_svm(features, labels)
 
 def make_predictions(model, features):
     predictions = model.predict(features)

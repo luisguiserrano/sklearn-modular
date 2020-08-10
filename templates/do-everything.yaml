@@ -25,18 +25,20 @@ spec:
             from modular.functions import read_dataset
             from modular.functions import preprocess_data
             from modular.utils import save_json
+            from modular.functions import train_model
             from modular.functions import train_perceptron
             from modular.functions import make_predictions
             from modular.functions import score_model
 
             params = {
-                'datafile': str('{{inputs.parameters.datafile}}')
+                'datafile': str('{{inputs.parameters.datafile}}'),
+                'model_name': str('{{inputs.parameters.model_name}}')
                 }
 
             data = read_dataset(params['datafile'])
             features, labels = preprocess_data(data)
 
-            model = train_perceptron(features, labels)
+            model = train_model(features, labels, model_name)
             predictions = make_predictions(model, features)
             score = score_model(model, features, labels)
 
