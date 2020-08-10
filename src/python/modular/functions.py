@@ -46,9 +46,9 @@ def score_model(model, features, labels):
     score = model.score(features, labels)
     return score
 
-raw_data = read_dataset('datasets/data.csv')
-data = preprocess_data(raw_data)
-features = data["features"]
-labels = data["labels"]
+#raw_data = read_dataset('datasets/data.csv')
+#data = preprocess_data(raw_data)
+#features = data["features"]
+#labels = data["labels"]
 
-train_perceptron(features, labels)
+#train_perceptron(features, labels)
