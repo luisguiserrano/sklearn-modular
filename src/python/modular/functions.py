@@ -53,7 +53,7 @@ def train_svm(features, labels):
 def train_model(features, labels, model_name="perceptron"):
     if model_name == "perceptron":
         return train_perceptron(features, labels)
-    elif model_name == "decision_tree":
+    elif model_name == "decisiontree":
         return train_decision_tree(features, labels)
     elif model_name == "svm":
         return train_svm(features, labels)
@@ -68,6 +68,7 @@ def score_model(model, features, labels):
 
 #data = read_dataset('datasets/data.csv')
 #features, labels = preprocess_data(data)
+#train_model(features, labels, 'decision_tree')
 #model = train_perceptron(features, labels)
 #predictions = make_predictions(model, features)
 #score = score_model(model, features, labels)

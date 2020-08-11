@@ -1,0 +1,53 @@
+ZapOSApiVersion: v1alpha1
+
+kind: Workflow
+
+resources:
+- name: sklearn-resource
+  type: git
+  parameters:
+    url: "git@github.com:luisguiserrano/sklearn-modular.git"
+    branch: "master"
+    
+metadata:
+  generateName: sk-
+
+spec:
+
+  entrypoint: main
+
+  arguments:
+    parameters:
+    - s3-bucket: quantum-engine
+    - s3-key: mine/sk/
+
+  templates:
+  - name: main
+    steps:
+    - - name: perceptron
+        template: do-everything
+        arguments:
+          parameters:
+          - resources: [sklearn-resource]
+          - docker-image: z-ml
+          - docker-tag: latest
+          - datafile: "datasets/data.csv"
+          - model_name: "perceptron"
+      - name: decision-tree
+        template: do-everything
+        arguments:
+          parameters:
+          - resources: [sklearn-resource]
+          - docker-image: z-ml
+          - docker-tag: latest
+          - datafile: "datasets/data.csv"
+          - model_name: "decisiontree"
+      - name: svm
+        template: do-everything
+        arguments:
+          parameters:
+          - resources: [sklearn-resource]
+          - docker-image: z-ml
+          - docker-tag: latest
+          - datafile: "datasets/data.csv"
+          - model_name: "svm"
