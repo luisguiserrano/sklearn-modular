@@ -60,14 +60,9 @@ def train_model(features, labels, model_name="perceptron"):
     else:
         return train_perceptron(features, labels)
 
-def make_predictions(model, features, labels):
+def make_predictions(model, features):
     predictions = model.predict(features)
-    result = {}
-    result['x_1'] = features['x_1']
-    result['x_2'] = features['x_2']
-    result['y'] = labels
-    result['y_pred'] = predictions
-    return result
+    return predictions
 
 def score_model(model, features, labels):
     score = model.score(features, labels)
@@ -76,7 +71,7 @@ def score_model(model, features, labels):
 #data = read_dataset('datasets/data.csv')
 #features, labels = preprocess_data(data)
 #model = train_model(features, labels, 'decisiontree')
-#predictions = make_predictions(model, features, labels)
+#predictions = make_predictions(model, features)
 #score = score_model(model, features, labels)
 #print(predictions)
 #print(score)
