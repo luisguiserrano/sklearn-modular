@@ -25,7 +25,7 @@ spec:
   - name: main
     steps:
     - - name: perceptron
-        template: do-everything
+        template: train-predict
         arguments:
           parameters:
           - resources: [sklearn-resource]
@@ -34,7 +34,7 @@ spec:
           - datafile: "datasets/data.csv"
           - model_name: "perceptron"
       - name: decision-tree
-        template: do-everything
+        template: train-predict
         arguments:
           parameters:
           - resources: [sklearn-resource]
@@ -43,7 +43,7 @@ spec:
           - datafile: "datasets/data.csv"
           - model_name: "decisiontree"
       - name: svm
-        template: do-everything
+        template: train-predict
         arguments:
           parameters:
           - resources: [sklearn-resource]
