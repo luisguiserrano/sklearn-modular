@@ -62,7 +62,7 @@ def train_model(features, labels, model_name="perceptron"):
 
 def make_predictions(model, features):
     predictions = model.predict(features)
-    return predictions
+    return list(predictions)
 
 def score_model(model, features, labels):
     score = model.score(features, labels)
