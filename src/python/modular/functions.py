@@ -60,9 +60,9 @@ def train_model(features, labels, model_name="perceptron"):
 
 def make_predictions(model, features, labels):
     predictions = model.predict(features)
-    results = features
-    results['y'] = labels
-    results['y_pred'] = predictions
+    result = features
+    result['y'] = labels
+    result['y_pred'] = predictions
     return result.to_dict()
 
 def score_model(model, features, labels):
