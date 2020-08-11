@@ -53,17 +53,21 @@ def train_svm(features, labels):
 def train_model(features, labels, model_name="perceptron"):
     if model_name == "perceptron":
         return train_perceptron(features, labels)
-    elif model_name == "decisiontree":
+    if model_name == "decisiontree":
         return train_decision_tree(features, labels)
     elif model_name == "svm":
         return train_svm(features, labels)
+    else:
+        return train_perceptron(features, labels)
 
 def make_predictions(model, features, labels):
     predictions = model.predict(features)
-    result = features
+    result = {}
+    result['x_1'] = features['x_1']
+    result['x_2'] = features['x_2']
     result['y'] = labels
     result['y_pred'] = predictions
-    return result.to_dict()
+    return result
 
 def score_model(model, features, labels):
     score = model.score(features, labels)
@@ -71,17 +75,8 @@ def score_model(model, features, labels):
 
 #data = read_dataset('datasets/data.csv')
 #features, labels = preprocess_data(data)
-#train_model(features, labels, 'decision_tree')
-#model = train_perceptron(features, labels)
-#predictions = make_predictions(model, features)
+#model = train_model(features, labels, 'decisiontree')
+#predictions = make_predictions(model, features, labels)
 #score = score_model(model, features, labels)
-#print(type(predictions))
-#print(features)
 #print(predictions)
-#results = features
-#results["y"] = labels
-#results["y_pred"] = predictions
-#print(results)
-#print(type(results.to_dict()))
-#print(type(score))
 #print(score)
