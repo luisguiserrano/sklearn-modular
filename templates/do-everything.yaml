@@ -40,7 +40,7 @@ spec:
             features, labels = preprocess_data(data)
 
             model = train_model(features, labels, params['model_name'])
-            predictions = make_predictions(model, features)
+            predictions = make_predictions(model, features, labels)
             score = score_model(model, features, labels)
 
             result = {}
