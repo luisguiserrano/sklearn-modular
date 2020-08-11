@@ -58,9 +58,11 @@ def train_model(features, labels, model_name="perceptron"):
     elif model_name == "svm":
         return train_svm(features, labels)
 
-def make_predictions(model, features):
+def make_predictions(model, features, labels):
     predictions = model.predict(features)
-    return list(predictions)
+    results['y'] = labels
+    results['y_pred'] = predictions
+    return result.to_dict()
 
 def score_model(model, features, labels):
     score = model.score(features, labels)
@@ -73,6 +75,12 @@ def score_model(model, features, labels):
 #predictions = make_predictions(model, features)
 #score = score_model(model, features, labels)
 #print(type(predictions))
+#print(features)
 #print(predictions)
+#results = features
+#results["y"] = labels
+#results["y_pred"] = predictions
+#print(results)
+#print(type(results.to_dict()))
 #print(type(score))
 #print(score)
